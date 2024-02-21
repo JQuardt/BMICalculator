@@ -34,8 +34,11 @@
                                                     <segment title="Imperial"/>
                                                     <segment title="Metric"/>
                                                 </segments>
+                                                <connections>
+                                                    <action selector="measurementChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="CxN-8b-HG9"/>
+                                                </connections>
                                             </segmentedControl>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hA2-4o-9AM">
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hA2-4o-9AM" customClass="impHeight">
                                                 <rect key="frame" x="0.0" y="41" width="353" height="34"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Height:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sRm-kv-4OD">
@@ -73,7 +76,7 @@
                                                     </stackView>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="kbs-j1-Xmo">
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="kbs-j1-Xmo" customClass="impWeight">
                                                 <rect key="frame" x="0.0" y="85" width="353" height="34"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weight:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hDw-ck-lXe">
@@ -100,7 +103,7 @@
                                                     </stackView>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="KPz-PL-aKl">
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="KPz-PL-aKl" customClass="metHeight">
                                                 <rect key="frame" x="0.0" y="129" width="353" height="34"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Height:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nUl-Gn-wPl">
@@ -127,7 +130,7 @@
                                                     </stackView>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="WHH-PF-gDR">
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="WHH-PF-gDR" customClass="metWeight">
                                                 <rect key="frame" x="0.0" y="173" width="353" height="34"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weight:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tbH-4t-a6C">
@@ -158,6 +161,9 @@
                                                 <rect key="frame" x="0.0" y="217" width="353" height="34.333333333333343"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="reset"/>
+                                                <connections>
+                                                    <action selector="reset:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gmp-9G-BOW"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -165,6 +171,9 @@
                                         <rect key="frame" x="0.0" y="684.66666666666663" width="353" height="34.333333333333371"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Compute BMI"/>
+                                        <connections>
+                                            <action selector="computeBMI:" destination="BYZ-38-t0r" eventType="touchUpInside" id="h4Y-vk-XcK"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -178,10 +187,92 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hox-iK-Wgt" secondAttribute="trailing" constant="20" id="wQ2-AV-QhB"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="heightCM" destination="Aqj-Mn-yHf" id="qCJ-VR-Zbf"/>
+                        <outlet property="heightFT" destination="BEY-nr-qdA" id="toV-NP-LL1"/>
+                        <outlet property="heightIN" destination="ETi-G4-QW3" id="bhM-Js-jHP"/>
+                        <outlet property="weightKG" destination="fTn-Uj-0K7" id="wxL-TU-tNM"/>
+                        <outlet property="weightLB" destination="77a-h5-MvY" id="Y8F-kc-1PH"/>
+                        <segue destination="4xT-xL-nN9" kind="presentation" identifier="toBMIView" id="FB7-q9-Ud2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="113.74045801526717" y="-27.464788732394368"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Fxn-Bz-G3k">
+            <objects>
+                <viewController id="4xT-xL-nN9" customClass="BMIViewController" customModule="BMICalculator" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Epj-7w-v7n">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="Pds-M2-Fbp">
+                                <rect key="frame" x="116" y="330" width="161" height="182"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="VLh-yg-8qD">
+                                        <rect key="frame" x="0.0" y="0.0" width="161" height="71"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your BMI is" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Jt-fs-H3U">
+                                                <rect key="frame" x="38.33333333333335" y="0.0" width="84.666666666666686" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mRM-dM-1JV">
+                                                <rect key="frame" x="60.666666666666657" y="30.333333333333311" width="40" height="40.666666666666657"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="upQ-t5-lqC">
+                                        <rect key="frame" x="0.0" y="111" width="161" height="71"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WLF-hh-aha">
+                                                <rect key="frame" x="52" y="0.0" width="57" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="overweight" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6hJ-xv-XPd">
+                                                <rect key="frame" x="0.0" y="30.333333333333311" width="161" height="40.666666666666657"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sx8-Eu-7X6">
+                                <rect key="frame" x="161.33333333333334" y="787.66666666666663" width="70.333333333333343" height="34.333333333333371"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="return"/>
+                                <connections>
+                                    <action selector="return:" destination="4xT-xL-nN9" eventType="touchUpInside" id="4VG-h3-Ns7"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="0PQ-jE-4hk"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="0PQ-jE-4hk" firstAttribute="bottom" secondItem="sx8-Eu-7X6" secondAttribute="bottom" constant="20" id="8n2-bV-155"/>
+                            <constraint firstItem="Pds-M2-Fbp" firstAttribute="centerX" secondItem="Epj-7w-v7n" secondAttribute="centerX" id="Wpz-fx-gcf"/>
+                            <constraint firstItem="sx8-Eu-7X6" firstAttribute="centerX" secondItem="Epj-7w-v7n" secondAttribute="centerX" id="a15-ys-k5U"/>
+                            <constraint firstItem="Pds-M2-Fbp" firstAttribute="centerY" secondItem="Epj-7w-v7n" secondAttribute="centerY" id="eAN-8W-h5N"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bmiLabel" destination="mRM-dM-1JV" id="tVJ-T5-3Xg"/>
+                        <outlet property="weightLabel" destination="6hJ-xv-XPd" id="F6J-38-MQD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vuf-jz-cgD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="985.49618320610682" y="-27.464788732394368"/>
         </scene>
     </scenes>
     <resources>

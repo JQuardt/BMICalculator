@@ -8,22 +8,30 @@
 import UIKit
 
 class BMIViewController: UIViewController {
+    
+    @IBOutlet weak var bmiLabel: UILabel!
+    @IBOutlet weak var weightLabel: UILabel!
+    
+    var bmi : Double = 0.0
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        bmiLabel.text = String(bmi)
+        
+        if bmi < 18.5 {
+            weightLabel.text = "underweight"
+        } else if bmi < 24.9 {
+            weightLabel.text = "normal weight"
+        } else if bmi < 29.9 {
+            weightLabel.text = "overweight"
+        } else {
+            weightLabel.text = "obese"
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func `return`(_ sender: UIButton) {
+        dismiss(animated: true)
     }
-    */
-
+    
 }
