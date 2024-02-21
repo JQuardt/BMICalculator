@@ -17,7 +17,7 @@ class BMIViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        bmiLabel.text = String(bmi)
+        bmiLabel.text = String(format: "%.1f", bmi)
         
         if bmi < 18.5 {
             weightLabel.text = "underweight"
@@ -30,8 +30,7 @@ class BMIViewController: UIViewController {
         }
     }
     
-    @IBAction func `return`(_ sender: UIButton) {
+    @IBAction func returnToMain(_ sender: UIButton) {
         dismiss(animated: true)
     }
-    
 }
