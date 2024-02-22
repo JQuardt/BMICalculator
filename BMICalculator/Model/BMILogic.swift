@@ -16,6 +16,7 @@ struct BMILogic {
     enum TextError : Error {
         case TextInvalid(reason: String)
         case NoValue(reason: String)
+        case ZeroValue(reason: String)
     }
     
     func getbmi() -> Double {
@@ -33,6 +34,8 @@ struct BMILogic {
             return (reason, false)
         } catch TextError.NoValue(let reason) {
             return (reason, false)
+        } catch TextError.ZeroValue(let reason) {
+            return (reason, false)
         } catch {
             return ("Error found", false)
         }
@@ -48,6 +51,9 @@ struct BMILogic {
             } else {
                 throw TextError.TextInvalid(reason: "The value must be an integer.")
             }
+        }
+        if Int(text)! == 0 {
+            throw TextError.ZeroValue(reason: "The value must be greater than zero.")
         }
     }
     
